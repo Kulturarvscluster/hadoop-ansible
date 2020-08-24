@@ -1,5 +1,5 @@
-- hosts: master 
-  remote_user: root
+- hosts: master
+  become: yes
   vars_files:
    - vars/user.yml
    - vars/var_basic.yml
@@ -7,8 +7,8 @@
   vars:
      add_user: true
      generate_key: true
-     open_firewall: true
-     disable_firewall: false
+     open_firewall: false
+     disable_firewall: true
      install_hadoop: true
      config_hadoop: true
   roles:

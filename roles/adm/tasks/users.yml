@@ -1,0 +1,45 @@
+---
+- name: system users
+  ipauser:
+    ipaadmin_password: "{{ipaadmin_password}}"
+    last: Apache
+    userclass: SystemUser
+    noprivate: yes
+    shell: /sbin/nologin
+
+    users:
+      - name: hdfs
+        first: Hdfs
+        uid: "{{users_hdfsGroup}}"
+        gid: "{{users_hdfsGroup}}"
+        homedir: /syshome/hdfs
+
+      - name: mapred
+        first: MapReduce
+        uid: "{{users_hadoopGroup | int + 1}}"
+        gid: "{{users_hadoopGroup}}"
+        homedir: /syshome/mapred
+
+      - name: yarn
+        first: Yarn
+        uid: "{{users_hadoopGroup | int + 2}}"
+        gid: "{{users_hadoopGroup}}"
+        homedir: /syshome/yarn
+
+      - name: zookeeper
+        first: ZooKeeper
+        uid: "{{users_hadoopGroup| int + 3}}"
+        gid: "{{users_hadoopGroup}}"
+        homedir: /syshome/zookeeper
+
+- name: system user groups
+  ipagroup:
+    ipaadmin_password: "{{ipaadmin_password}}"
+    name: hadoop
+    action: member
+    user:
+      - hdfs
+      - mapred
+      - yarn
+      - zookeeper
+
