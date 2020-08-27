@@ -34,5 +34,5 @@ CLUSTER_NAME: NAH
 LDAP_DOMAIN: "dc=nah,dc=hadoop"
 
 STO_DATA_DIR: /sto-data
-SYSHOME_DIR: "{{STO_DATA_DIR}}/syshome"
-AUTOHOME_DIR: "{{STO_DATA_DIR}}/home"
+SYSHOME_DIR: /sto-data/syshome
+AUTOHOME_DIR: /sto-data/home

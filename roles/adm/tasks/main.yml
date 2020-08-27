@@ -6,7 +6,10 @@
 
 
 - include: groups.yml
-
 - include: users.yml
+- include: syshomes.yml
+- include: humans.yml
+- include: sudorules.yml
+
 
 
